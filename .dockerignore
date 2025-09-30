@@ -1,0 +1,34 @@
+
+# dependencies
+/node_modules
+ckeditor5/node_modules
+/.pnp
+.pnp.js
+package-lock.json
+
+# production
+/build
+/private
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+# .env
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+
+.env.example
+docker-compose.yml
+Docerfile
