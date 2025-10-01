@@ -10,11 +10,11 @@ export default async function Home(props: Props) {
   const { locale } = await props.params;
   setRequestLocale(locale);
 
-  const t = await getTranslations('HomePage');
-  
+  const t = await getTranslations("HomePage");
+
   return (
     <div>
-      <h1>{t('title')}</h1>
+      <h1 className="font-bold">{t("title")}</h1>
       <Link href="/test">Test</Link>
       <LocaleSwitcher />
     </div>

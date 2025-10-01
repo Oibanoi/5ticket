@@ -1,15 +1,15 @@
 {
   /*
    * TYPESCRIPT CONFIGURATION
-   * 
+   *
    * Purpose: Configure TypeScript compiler and type checking for Next.js project
-   * 
+   *
    * Important settings:
    * - target: ES2017 - JavaScript version output
    * - strict: true - Enable strict mode for stricter type checking
    * - noEmit: true - Only type checking, no JS compilation (Next.js handles this)
    * - paths: Configure import aliases (@/components instead of ./components)
-   * 
+   *
    * To modify:
    * - Add new aliases to "paths"
    * - Adjust "strict" settings in "compilerOptions"
@@ -17,50 +17,50 @@
    */
 
   "compilerOptions": {
-    "target": "ES2017",    // Target JavaScript version for output
-    "baseUrl": "src", 
-    "lib": ["dom", "dom.iterable", "esnext"],     // TypeScript libraries that can be used
-    "allowJs": true,    // Allow importing .js files in .ts
-    "skipLibCheck": true,    // Skip type checking for node_modules (faster compilation)
-    "strict": false,    // Enable strict mode - stricter type checking
-    "noEmit": true,    // Don't emit JS files (Next.js will handle)
-    "esModuleInterop": true,    // Compatibility with ES modules and CommonJS
-    "module": "esnext",    // Module system
+    "target": "ES2017", // Target JavaScript version for output
+    "baseUrl": "src",
+    "lib": ["dom", "dom.iterable", "esnext"], // TypeScript libraries that can be used
+    "allowJs": true, // Allow importing .js files in .ts
+    "skipLibCheck": true, // Skip type checking for node_modules (faster compilation)
+    "strict": false, // Enable strict mode - stricter type checking
+    "noEmit": true, // Don't emit JS files (Next.js will handle)
+    "esModuleInterop": true, // Compatibility with ES modules and CommonJS
+    "module": "esnext", // Module system
     "moduleResolution": "bundler",
-    "resolveJsonModule": true,    // Allow importing JSON files
-    "isolatedModules": true,    // Each file is compiled separately
-    "jsx": "preserve",    // Preserve JSX (Next.js will transform)
-    "incremental": true,    // Incremental compilation for speed
+    "resolveJsonModule": true, // Allow importing JSON files
+    "isolatedModules": true, // Each file is compiled separately
+    "jsx": "preserve", // Preserve JSX (Next.js will transform)
+    "incremental": true, // Incremental compilation for speed
     "plugins": [
-      {    
-        "name": "next"    // Next.js TypeScript plugin
+      {
+        "name": "next" // Next.js TypeScript plugin
       }
     ],
-    
+
     // Import aliases - enables shorter imports
     "paths": {
-      "@/*": ["./*"],                          // @/file.ts -> ./file.ts
-      "@/components/*": ["./components/*"],     // @/components/Button -> ./components/Button
-      "@/libs/*": ["./libs/*"],                // Utility libraries
-      "@/types/*": ["./types/*"],              // Type definitions
-      "@/utils/*": ["./utils/*"],              // Helper functions
-      "@/hooks/*": ["./hooks/*"],              // React hooks
-      "@/constants/*": ["./constants/*"],       // Constants
-      "@/contexts/*": ["./contexts/*"],         // React contexts
-      "@/services/*": ["./services/*"],         // API services
-      "@/i18n/*": ["./i18n/*"],                // Internationalization
-      "@/styles/*": ["./styles/*"],              // Styles
+      "@/*": ["./*"], // @/file.ts -> ./file.ts
+      "@/components/*": ["./components/*"], // @/components/Button -> ./components/Button
+      "@/lib/*": ["./lib/*"], // Utility libraries
+      "@/types/*": ["./types/*"], // Type definitions
+      "@/utils/*": ["./utils/*"], // Helper functions
+      "@/hooks/*": ["./hooks/*"], // React hooks
+      "@/constants/*": ["./constants/*"], // Constants
+      "@/contexts/*": ["./contexts/*"], // React contexts
+      "@/services/*": ["./services/*"], // API services
+      "@/i18n/*": ["./i18n/*"], // Internationalization
+      "@/styles/*": ["./styles/*"] // Styles
     }
   },
-  
+
   // Files included in TypeScript compilation
   "include": [
-    "next-env.d.ts",          // Next.js type definitions
-    "**/*.ts",                // All TypeScript files
-    "**/*.tsx",               // All TypeScript React files
-    ".next/types/**/*.ts"     // Next.js generated types
+    "next-env.d.ts", // Next.js type definitions
+    "**/*.ts", // All TypeScript files
+    "**/*.tsx", // All TypeScript React files
+    ".next/types/**/*.ts" // Next.js generated types
   ],
-  
+
   // Files/folders excluded from compilation
   "exclude": ["node_modules"]
 }

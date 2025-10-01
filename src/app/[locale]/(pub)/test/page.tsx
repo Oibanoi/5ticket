@@ -2,7 +2,6 @@
 import { useTranslations } from "next-intl";
 
 export default function TestPage() {
-    const t = useTranslations('HomePage');
-    console.log(t('title'));
-    return <div>{t('title')}</div>;
+  const t = useTranslations("HomePage");
+  return <div className="bg-background text-foreground">{t("title")}</div>;
 }
