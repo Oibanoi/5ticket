@@ -3,8 +3,9 @@ import { redditSans } from "@/fonts";
 import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { Header } from "@/components/header/Header";
 
 type Props = {
   children: React.ReactNode;
@@ -17,13 +18,17 @@ export default async function RootLayout({ children, params }: Props) {
     notFound();
   }
   setRequestLocale(locale);
+  const messages = await getMessages();
 
   return (
     <html lang={locale}>
       <body
         className={cn("bg-background text-foreground", redditSans.className, redditSans.variable)}
       >
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>
+          <Header />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
