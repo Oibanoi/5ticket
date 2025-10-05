@@ -42,6 +42,72 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --color-light-white: #ffffff;
+  --color-light-white-hover: #fcfdfd;
+  --color-light-white-active: #f5f7f9;
+  --color-light: #fcfdfd;
+  --color-light-hover: #f5f7f9;
+  --color-light-active: #f0f3f6;
+  --color-light-normal: #f9fafb;
+  --color-light-normal-hover: #f2f4f7;
+  --color-light-normal-active: #ebeef2;
+  --color-light-dark: #f6f8f9;
+
+  /* ================================
+     Dark palette
+  =================================*/
+  --color-dark-lighter: #b3b6bd;
+  --color-dark-light-hover: #a3a8b0;
+  --color-dark-light-active: #9196a0;
+  --color-dark-normal: #555d6d;
+  --color-dark-normal-hover: #484f5d;
+  --color-dark-normal-active: #3e4450;
+  --color-dark: #1e2126;
+  --color-dark-hover: #15171b;
+  --color-dark-active: #090a0c;
+
+  /* ================================
+     Yellow palette
+  =================================*/
+  --color-yellow-light: #fffde6;
+  --color-yellow-light-hover: #fffcd9;
+  --color-yellow-light-active: #fffab0;
+  --color-yellow-normal: #ffeb00;
+  --color-yellow-normal-hover: #e6d600;
+  --color-yellow-normal-active: #ccb800;
+  --color-yellow-dark: #bfb300;
+  --color-yellow-dark-hover: #998f00;
+  --color-yellow-dark-active: #736b00;
+  --color-yellow-darker: #595300;
+
+  /* ================================
+     Blue palette
+  =================================*/
+  --color-blue-light: #e9f1fd;
+  --color-blue-light-hover: #dee8fc;
+  --color-blue-light-active: #bbd0f9;
+  --color-blue-normal: #2563eb;
+  --color-blue-normal-hover: #2159d4;
+  --color-blue-normal-active: #1e4fbc;
+  --color-blue-dark: #1c4ab0;
+  --color-blue-dark-hover: #163b8d;
+  --color-blue-dark-active: #112d6a;
+  --color-blue-darker: #0d2352;
+
+  /* ================================
+     Red palette
+  =================================*/
+  --color-red-light: #fee7ef;
+  --color-red-light-hover: #fdd8e7;
+  --color-red-light-active: #fbb4ce;
+  --color-red-normal: #f30660;
+  --color-red-normal-hover: #db0b56;
+  --color-red-normal-active: #c20d4d;
+  --color-red-dark: #b60948;
+  --color-red-dark-hover: #92073a;
+  --color-red-dark-active: #60052b;
+  --color-red-darker: #550422;
 }
 
 :root {
@@ -54,7 +120,7 @@
   --popover-foreground: oklch(0.13 0.028 261.692);
   --primary: oklch(0.21 0.034 264.665);
   --primary-foreground: oklch(0.985 0.002 247.839);
-  --secondary: oklch(0.967 0.003 264.542);
+  --secondary: #2563eb;
   --secondary-foreground: oklch(0.21 0.034 264.665);
   --muted: oklch(0.967 0.003 264.542);
   --muted-foreground: oklch(0.551 0.027 264.364);
@@ -117,6 +183,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
