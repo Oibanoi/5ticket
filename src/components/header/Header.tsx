@@ -14,9 +14,9 @@ export function Header() {
 
   return (
     <header className="w-full bg-[#0d0d0d] text-white relative z-50">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
+      <div className="flex max-w-7xl items-center justify-between px-3  pr-6 py-3">
         {/* Logo */}
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center">
           <Image src="/logo.svg" alt="5TICKET" width={100} height={40} className="h-8 w-auto" />
         </div>
 
