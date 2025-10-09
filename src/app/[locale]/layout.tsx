@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { Header } from "@/components/header/Header";
+import { HeaderWrapper } from "@/components/header/HeaderWrapper";
 
 type Props = {
   children: React.ReactNode;
@@ -17,6 +17,7 @@ export default async function RootLayout({ children, params }: Props) {
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+
   setRequestLocale(locale);
   const messages = await getMessages();
 
@@ -26,7 +27,7 @@ export default async function RootLayout({ children, params }: Props) {
         className={cn("bg-background text-foreground", redditSans.className, redditSans.variable)}
       >
         <NextIntlClientProvider messages={messages}>
-          <Header />
+          <HeaderWrapper />
           {children}
         </NextIntlClientProvider>
       </body>
