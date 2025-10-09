@@ -35,25 +35,48 @@ export function LanguageSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="text-sm flex items-center space-x-2">
+        <Button
+          variant="ghost"
+          className="text-sm flex items-center space-x-2 cursor-pointer hover:bg-transparent hover:text-white outline-none border-none"
+        >
           <Image
             src={languages[locale as keyof typeof languages].flag}
             alt={languages[locale as keyof typeof languages].label}
             width={20}
             height={14}
-            className="rounded-sm"
           />
-          <span>{languages[locale as keyof typeof languages].label}</span>
+          <span className="font-medium">{languages[locale as keyof typeof languages].label}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-32">
-        <DropdownMenuItem onClick={() => handleLanguageChange("vi")}>
-          <Image src={languages.vi.flag} alt="VI" width={20} height={14} className="rounded-sm" />
-          <span className="ml-2">{languages.vi.name}</span>
+      <DropdownMenuContent
+        align="end"
+        className="w-40 bg-white border border-gray-200 shadow-lg rounded-lg p-1"
+      >
+        <DropdownMenuItem
+          onClick={() => handleLanguageChange("vi")}
+          className="flex items-center px-3 py-2 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 cursor-pointer group"
+        >
+          <Image
+            src={languages.vi.flag}
+            alt="VI"
+            width={20}
+            height={14}
+            className="rounded-sm transition-transform duration-200 group-hover:scale-110"
+          />
+          <span className="ml-3 font-medium">{languages.vi.name}</span>
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleLanguageChange("en")}>
-          <Image src={languages.en.flag} alt="EN" width={20} height={14} className="rounded-sm" />
-          <span className="ml-2">{languages.en.name}</span>
+        <DropdownMenuItem
+          onClick={() => handleLanguageChange("en")}
+          className="flex items-center px-3 py-2 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 cursor-pointer group"
+        >
+          <Image
+            src={languages.en.flag}
+            alt="EN"
+            width={20}
+            height={14}
+            className="rounded-sm transition-transform duration-200 group-hover:scale-110"
+          />
+          <span className="ml-3 font-medium">{languages.en.name}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
