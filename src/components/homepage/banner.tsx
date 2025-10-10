@@ -13,6 +13,8 @@ const Banner = () => {
             autoplayDelay={3000}
             numberOfSlides={1}
             activeDot={true}
+            borderRadius="rounded-[20px]"
+            isNavigation={false}
           >
             {events.map((event) => (
               <div key={event.id} className="flex-none w-full">
