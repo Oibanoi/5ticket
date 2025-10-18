@@ -1,18 +1,27 @@
 "use client";
 
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Search, Ticket, Menu, X } from "lucide-react";
 import Image from "next/image";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { UserMenu } from "./UserMenu";
+import { HeaderAuthSkeleton, HeaderAuthSkeletonMobile } from "./HeaderSkeleton";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
+import { useAuth } from "@/contexts/AuthContext";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const { status } = useSession();
+  const { showLoginModal, showRegisterModal } = useAuth();
   const t = useTranslations("Header");
+
+  const isLoading = status === "loading";
+  const isAuthenticated = status === "authenticated";
   return (
     <header className="w-full bg-[#0d0d0d] text-white relative z-50">
       <div className="flex max-w-[var(--container-8xl)] items-center justify-between px-6 py-3 mx-auto">
@@ -22,7 +31,7 @@ export function Header() {
         </div>
 
         {/* Desktop Search */}
-        <div className="hidden md:flex flex-1 mx-8 max-w-2xl">
+        <div className="hidden md:flex flex-1 mx-8">
           <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
             <Input
@@ -38,27 +47,39 @@ export function Header() {
             {t("create_event")}
           </Button>
 
-          <div className="flex items-center space-x-1 cursor-pointer hover:text-white">
-            <Ticket size={20} />
-            <span className="text-sm font-medium">{t("my_tickets")}</span>
-          </div>
+          {isAuthenticated && (
+            <div className="flex items-center space-x-1 cursor-pointer hover:text-white">
+              <Ticket size={20} />
+              <span className="text-sm font-medium">{t("my_tickets")}</span>
+            </div>
+          )}
 
           <Separator orientation="vertical" className="h-6 bg-gray-700 mx-1" />
 
           <LanguageSwitcher />
 
-          <Button
-            variant="default"
-            className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-5"
-          >
-            {t("login")}
-          </Button>
-          <Button
-            variant="secondary"
-            className="bg-gray-600 hover:bg-gray-700 text-white rounded-full px-5"
-          >
-            {t("register")}
-          </Button>
+          {isLoading ? (
+            <HeaderAuthSkeleton />
+          ) : isAuthenticated ? (
+            <UserMenu />
+          ) : (
+            <>
+              <Button
+                variant="default"
+                className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-5"
+                onClick={showLoginModal}
+              >
+                {t("login")}
+              </Button>
+              <Button
+                variant="secondary"
+                className="bg-gray-600 hover:bg-gray-700 text-white rounded-full px-5"
+                onClick={showRegisterModal}
+              >
+                {t("register")}
+              </Button>
+            </>
+          )}
         </div>
 
         {/* Mobile Breadcrumb (Menu button) */}
@@ -98,20 +119,30 @@ export function Header() {
 
           <LanguageSwitcher />
 
-          <div className="flex space-x-3 pt-2">
-            <Button
-              variant="default"
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white rounded-full"
-            >
-              {t("login")}
-            </Button>
-            <Button
-              variant="secondary"
-              className="flex-1 bg-gray-600 hover:bg-gray-700 text-white rounded-full"
-            >
-              {t("register")}
-            </Button>
-          </div>
+          {isLoading ? (
+            <HeaderAuthSkeletonMobile />
+          ) : isAuthenticated ? (
+            <div className="pt-2 border-t border-gray-700">
+              <UserMenu />
+            </div>
+          ) : (
+            <div className="flex space-x-3 pt-2">
+              <Button
+                variant="default"
+                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white rounded-full"
+                onClick={showLoginModal}
+              >
+                {t("login")}
+              </Button>
+              <Button
+                variant="secondary"
+                className="flex-1 bg-gray-600 hover:bg-gray-700 text-white rounded-full"
+                onClick={showRegisterModal}
+              >
+                {t("register")}
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </header>

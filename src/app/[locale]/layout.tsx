@@ -6,6 +6,9 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { HeaderWrapper } from "@/components/header/HeaderWrapper";
+import { ReactQueryProvider } from "@/providers/react-query-provider";
+import { SessionProvider } from "@/providers/session-provider";
+import { AuthProvider } from "@/providers/auth-provider";
 
 type Props = {
   children: React.ReactNode;
@@ -26,10 +29,16 @@ export default async function RootLayout({ children, params }: Props) {
       <body
         className={cn("bg-background text-foreground", redditSans.className, redditSans.variable)}
       >
-        <NextIntlClientProvider messages={messages}>
-          <HeaderWrapper />
-          {children}
-        </NextIntlClientProvider>
+        <SessionProvider>
+          <ReactQueryProvider>
+            <NextIntlClientProvider messages={messages}>
+              <AuthProvider>
+                <HeaderWrapper />
+                {children}
+              </AuthProvider>
+            </NextIntlClientProvider>
+          </ReactQueryProvider>
+        </SessionProvider>
       </body>
     </html>
   );
