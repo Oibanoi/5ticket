@@ -8,13 +8,14 @@ import { Search, Ticket, Menu, X } from "lucide-react";
 import Image from "next/image";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 export function Header() {
   const [open, setOpen] = useState(false);
-
+  const t = useTranslations("Header");
   return (
     <header className="w-full bg-[#0d0d0d] text-white relative z-50">
-      <div className="flex max-w-7xl items-center justify-between px-3  pr-6 py-3">
+      <div className="flex max-w-[var(--container-8xl)] items-center justify-between px-6 py-3 mx-auto">
         {/* Logo */}
         <div className="flex items-center">
           <Image src="/logo.svg" alt="5TICKET" width={100} height={40} className="h-8 w-auto" />
@@ -25,7 +26,7 @@ export function Header() {
           <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
             <Input
-              placeholder="Tìm kiếm sự kiện"
+              placeholder={t("search_event")}
               className="pl-10 bg-[#1a1c20] border-none text-sm text-white placeholder:text-gray-400 rounded-full focus-visible:ring-1 focus-visible:ring-blue-600"
             />
           </div>
@@ -34,12 +35,12 @@ export function Header() {
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center space-x-4">
           <Button variant="link" className="text-sm text-gray-200 hover:text-white">
-            Tạo sự kiện
+            {t("create_event")}
           </Button>
 
           <div className="flex items-center space-x-1 cursor-pointer hover:text-white">
             <Ticket size={20} />
-            <span className="text-sm font-medium">Vé của tôi</span>
+            <span className="text-sm font-medium">{t("my_tickets")}</span>
           </div>
 
           <Separator orientation="vertical" className="h-6 bg-gray-700 mx-1" />
@@ -50,13 +51,13 @@ export function Header() {
             variant="default"
             className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-5"
           >
-            Đăng nhập
+            {t("login")}
           </Button>
           <Button
             variant="secondary"
             className="bg-gray-600 hover:bg-gray-700 text-white rounded-full px-5"
           >
-            Đăng ký
+            {t("register")}
           </Button>
         </div>
 
@@ -85,12 +86,12 @@ export function Header() {
           </div>
 
           <Button variant="link" className="justify-start text-gray-200 hover:text-white">
-            Tạo sự kiện
+            {t("create_event")}
           </Button>
 
           <div className="flex items-center space-x-2 cursor-pointer hover:text-white">
             <Ticket size={20} />
-            <span className="text-sm font-medium">Vé của tôi</span>
+            <span className="text-sm font-medium">{t("my_tickets")}</span>
           </div>
 
           <Separator className="bg-gray-700" />
@@ -102,13 +103,13 @@ export function Header() {
               variant="default"
               className="flex-1 bg-blue-600 hover:bg-blue-700 text-white rounded-full"
             >
-              Đăng nhập
+              {t("login")}
             </Button>
             <Button
               variant="secondary"
               className="flex-1 bg-gray-600 hover:bg-gray-700 text-white rounded-full"
             >
-              Đăng ký
+              {t("register")}
             </Button>
           </div>
         </div>

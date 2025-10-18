@@ -1,5 +1,15 @@
 {
-    "HomePage": {
-      "title": "Xin chào thế giới!"
-    }
+  "Header": {
+    "create_event": "Tạo sự kiện",
+    "my_tickets": "Vé của tôi",
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "search_event": "Tìm kiếm sự kiện"
+  },
+  "HomePage": {
+    "featured_events": "Sự kiện nổi bật",
+    "for_you": "Dành cho bạn",
+    "from": "Từ",
+    "all_events": "Tất cả sự kiện"
   }
+}

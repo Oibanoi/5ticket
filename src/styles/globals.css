@@ -108,15 +108,21 @@
   --color-red-dark-hover: #92073a;
   --color-red-dark-active: #60052b;
   --color-red-darker: #550422;
+
+  /* ================================
+    custom palette
+  =================================*/
+  --color-gray-normal: #3e4450;
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: rgba(9, 10, 12, 1);
   --foreground: oklch(0.13 0.028 261.692);
-  --card: oklch(1 0 0);
+  --container-8xl: 1440px;
+  --card: rgba(9, 10, 12, 1);
   --card-foreground: oklch(0.13 0.028 261.692);
-  --popover: oklch(1 0 0);
+  --popover: rgba(9, 10, 12, 1);
   --popover-foreground: oklch(0.13 0.028 261.692);
   --primary: oklch(0.21 0.034 264.665);
   --primary-foreground: oklch(0.985 0.002 247.839);
@@ -186,5 +192,51 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  /* Smooth scrolling cho carousel */
+  .embla {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Cải thiện touch/drag experience */
+  .embla__container {
+    touch-action: pan-y pinch-zoom;
+  }
+
+  /* Custom scrollbar cho carousel (ẩn đi) */
+  .embla::-webkit-scrollbar {
+    display: none;
+  }
+
+  .embla {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }

@@ -1,5 +1,15 @@
 {
-    "HomePage": {
-      "title": "Hello world!"
-    }
+  "Header": {
+    "create_event": "Create Event",
+    "my_tickets": "My Tickets",
+    "login": "Login",
+    "register": "Register",
+    "search_event": "Search Event"
+  },
+  "HomePage": {
+    "featured_events": "Featured events",
+    "for_you": "For you",
+    "from": "From",
+    "all_events": "All Events"
   }
+}
