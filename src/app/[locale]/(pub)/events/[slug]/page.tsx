@@ -2,7 +2,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import EventBooking from "./event-booking";
 
 type Props = {
-  params: { slug: string; locale: string };
+  params: Promise<{ slug: string; locale: string }>;
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
@@ -12,6 +12,7 @@ export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
+  const { slug, locale } = await params;
   const eventTitle = "Đêm nhạc Minh Tuyết - Phạm Quỳnh Anh";
   const eventDescription =
     "Đêm nhạc đặc biệt với sự góp mặt của hai ca sĩ nổi tiếng Minh Tuyết và Phạm Quỳnh Anh tại Khu đô thị Vạn Phúc";
@@ -26,10 +27,10 @@ export async function generateMetadata(
       description: eventDescription,
       type: "website",
       siteName: "5Ticket",
-      locale: params.locale,
+      locale: locale,
       images: [
         {
-          url: `/events/${params.slug}/opengraph-image`,
+          url: `/events/${slug}/opengraph-image`,
           width: 1200,
           height: 630,
           alt: eventTitle,
@@ -40,7 +41,7 @@ export async function generateMetadata(
       card: "summary_large_image",
       title: eventTitle,
       description: eventDescription,
-      images: [`/events/${params.slug}/opengraph-image`],
+      images: [`/events/${slug}/opengraph-image`],
     },
   };
 }

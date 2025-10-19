@@ -15,6 +15,13 @@
     "from": "From",
     "all_events": "All Events"
   },
+  "WaitingRoom": {
+    "title": "You are in the queue",
+    "your_position": "Your position",
+    "estimated_time": "Estimated time",
+    "instructions": "Don't leave this screen, you will be automatically redirected to the payment step when it's your turn",
+    "queue_icon_alt": "Queue status animation"
+  },
   "ModalLogin": {
     "login": "Sign In",
     "login_desc": "Welcome back! Please enter your credentials.",
@@ -76,5 +83,40 @@
     "banner_2_desc": "Quick checkout with multiple payment options and secure transactions.",
     "banner_3_title": "Never Miss Out",
     "banner_3_desc": "Get notified about upcoming events and exclusive early-bird offers."
+  },
+  "Checkout": {
+    "complete_booking": "Complete booking within",
+    "purchase_info": "Purchase Information",
+    "first_name": "First & Middle Name",
+    "first_name_placeholder": "John",
+    "last_name": "Last Name",
+    "last_name_placeholder": "Doe",
+    "birth_date": "Date of Birth",
+    "id_number": "ID/Passport",
+    "continue": "Continue"
+  },
+  "Common": {
+    "back": "Back",
+    "from": "From"
+  },
+  "EventDetail": {
+    "select_schedule": "Select Schedule",
+    "introduction": "Introduction",
+    "view_more": "View More",
+    "collapse": "Collapse",
+    "select_ticket": "Select Ticket",
+    "buy_now": "Buy Now",
+    "sold_out": "Sold Out"
+  },
+  "TicketSelection": {
+    "complete_booking": "Complete booking within",
+    "note": "Note: You can only select tickets from one zone",
+    "decrease": "Decrease quantity",
+    "increase": "Increase quantity",
+    "quantity": "Ticket quantity",
+    "continue": "Continue",
+    "close": "Close",
+    "select_ticket": "Select Ticket",
+    "sold_out": "Sold Out"
   }
 }

@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { X } from "lucide-react";
 import { Carousel } from "@/components/common/Carousel";
-import LoginForm from "@/components/forms/LoginForm";
-import RegisterForm from "@/components/forms/RegisterForm";
-import ResetPasswordForm from "@/components/forms/ResetPasswordForm";
+import LoginForm from "@/components/forms/auth-forms/LoginForm";
+import RegisterForm from "@/components/forms/auth-forms/RegisterForm";
+import ResetPasswordForm from "@/components/forms/auth-forms/ResetPasswordForm";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 

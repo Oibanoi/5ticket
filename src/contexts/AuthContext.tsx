@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, ReactNode, useCallback } from "react";
 import { useSession } from "next-auth/react";
-import { FormType } from "@/components/auth-modal";
+import { FormType } from "@/components/modal/auth-modal";
 
 interface AuthContextType {
   // Modal state

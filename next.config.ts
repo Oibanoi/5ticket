@@ -33,7 +33,11 @@ const nextConfig: NextConfig = {
 
   // Configure image domains
   images: {
-    domains: ["via.placeholder.com", "rjp-v2-prod.s3.ap-southeast-1.amazonaws.com"],
+    domains: [
+      "via.placeholder.com",
+      "rjp-v2-prod.s3.ap-southeast-1.amazonaws.com",
+      "api.builder.io",
+    ],
   },
 
   // Environment variables

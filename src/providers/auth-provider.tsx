@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 import { AuthProvider as AuthContextProvider } from "@/contexts/AuthContext";
-import { GlobalAuthModal } from "@/components/auth-modal/GlobalAuthModal";
+import { GlobalAuthModal } from "@/components/modal/auth-modal/GlobalAuthModal";
 
 interface AuthProviderProps {
   children: ReactNode;

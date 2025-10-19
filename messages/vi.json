@@ -15,6 +15,13 @@
     "from": "Từ",
     "all_events": "Tất cả sự kiện"
   },
+  "WaitingRoom": {
+    "title": "Bạn đang trong hàng chờ",
+    "your_position": "Vị trí của bạn",
+    "estimated_time": "Thời gian ước tính",
+    "instructions": "Đừng thoát màn hình, bạn sẽ được tự động chuyển sang bước thanh toán khi tới lượt",
+    "queue_icon_alt": "Animation trạng thái hàng chờ"
+  },
   "ModalLogin": {
     "login": "Đăng nhập",
     "login_desc": "Chào mừng trở lại! Vui lòng nhập thông tin đăng nhập.",
@@ -76,5 +83,40 @@
     "banner_2_desc": "Thanh toán nhanh chóng với nhiều phương thức và giao dịch bảo mật.",
     "banner_3_title": "Không bỏ lỡ cơ hội",
     "banner_3_desc": "Nhận thông báo về sự kiện sắp tới và ưu đãi đặt vé sớm độc quyền."
+  },
+  "Checkout": {
+    "complete_booking": "Hoàn tất đặt vé trong",
+    "purchase_info": "Thông tin mua hàng",
+    "first_name": "Họ và tên đệm",
+    "first_name_placeholder": "Nguyen Van",
+    "last_name": "Tên",
+    "last_name_placeholder": "Anh",
+    "birth_date": "Ngày sinh",
+    "id_number": "CCCD/Passport",
+    "continue": "Tiếp tục"
+  },
+  "Common": {
+    "back": "Quay lại",
+    "from": "Từ"
+  },
+  "EventDetail": {
+    "select_schedule": "Chọn lịch",
+    "introduction": "Giới thiệu",
+    "view_more": "Xem thêm",
+    "collapse": "Thu gọn",
+    "select_ticket": "Chọn vé",
+    "buy_now": "Mua vé ngay",
+    "sold_out": "Hết vé"
+  },
+  "TicketSelection": {
+    "complete_booking": "Hoàn tất đặt vé trong",
+    "note": "Lưu ý bạn chỉ có thể chọn vé trong 1 khu vực",
+    "decrease": "Giảm số lượng",
+    "increase": "Tăng số lượng",
+    "quantity": "Số lượng vé",
+    "continue": "Tiếp tục",
+    "close": "Đóng",
+    "select_ticket": "Chọn vé",
+    "sold_out": "Hết vé"
   }
 }

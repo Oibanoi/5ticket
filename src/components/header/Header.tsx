@@ -13,6 +13,7 @@ import { HeaderAuthSkeleton, HeaderAuthSkeletonMobile } from "./HeaderSkeleton";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { useAuth } from "@/contexts/AuthContext";
+import Link from "next/link";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -27,7 +28,9 @@ export function Header() {
       <div className="flex max-w-[var(--container-8xl)] items-center justify-between px-6 py-3 mx-auto">
         {/* Logo */}
         <div className="flex items-center">
-          <Image src="/logo.svg" alt="5TICKET" width={100} height={40} className="h-8 w-auto" />
+          <Link href="/">
+            <Image src="/logo.svg" alt="5TICKET" width={100} height={40} className="h-8 w-auto" />
+          </Link>
         </div>
 
         {/* Desktop Search */}
