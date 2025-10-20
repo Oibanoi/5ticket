@@ -87,7 +87,7 @@ export const TicketQuantityModal: React.FC<TicketQuantityModalProps> = ({
                 <Minus className="w-4 h-4 text-white" />
               </button>
 
-              <div className="flex items-center justify-center min-h-12 w-[226px] bg-[#1E2126] rounded-[20px]">
+              <div className="flex items-center justify-center min-h-12 w-[226px] bg-background-secondary rounded-[20px]">
                 <input
                   type="number"
                   value={quantity}

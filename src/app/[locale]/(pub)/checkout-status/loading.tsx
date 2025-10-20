@@ -1,5 +1,5 @@
 import { LoadingSpinner } from "@/components/common/LoadingAnimation";
 
-export default function CheckoutLoading() {
+export default function CheckoutStatusLoading() {
   return <LoadingSpinner size={128} />;
 }

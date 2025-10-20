@@ -6,6 +6,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-background-secondary: var(--background-secondary);
   --font-sans: "Reddit Sans", sans-serif;
   --font-mono: var(--font-geist-mono);
   --font-reddit-sans: var(--font-reddit-sans);
@@ -113,6 +114,40 @@
     custom palette
   =================================*/
   --color-gray-normal: #3e4450;
+
+  /* ================================
+     Status colors
+  =================================*/
+  --color-success: #32d583;
+  --color-success-hover: #2dbf76;
+  --color-success-active: #28a869;
+  --color-warning: #ffa500;
+  --color-warning-hover: #e69500;
+  --color-warning-active: #cc8400;
+  --color-error: #f30c60;
+  --color-error-hover: #db0b56;
+  --color-error-active: #c20d4d;
+
+  /* ================================
+     Additional UI colors
+  =================================*/
+  --color-hover-dark: #2a2e35;
+  --color-hover-gray: #2a2f35;
+  --color-input-bg: #3e4450;
+  --color-input-text: #ebeef2;
+
+  /* ================================
+     Responsive font sizes
+  =================================*/
+  --font-size-xs: clamp(0.625rem, 0.6rem + 0.125vw, 0.75rem);
+  --font-size-sm: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --font-size-base: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
+  --font-size-lg: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --font-size-xl: clamp(1.125rem, 1.05rem + 0.375vw, 1.25rem);
+  --font-size-2xl: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --font-size-3xl: clamp(1.5rem, 1.35rem + 0.75vw, 1.875rem);
+  --font-size-4xl: clamp(1.875rem, 1.65rem + 1.125vw, 2.25rem);
+  --font-size-5xl: clamp(2.25rem, 1.95rem + 1.5vw, 3rem);
 }
 
 :root {
@@ -127,6 +162,7 @@
   --primary: oklch(0.21 0.034 264.665);
   --primary-foreground: oklch(0.985 0.002 247.839);
   --secondary: #2563eb;
+  --background-secondary: #1e2126;
   --secondary-foreground: oklch(0.21 0.034 264.665);
   --muted: oklch(0.967 0.003 264.542);
   --muted-foreground: oklch(0.551 0.027 264.364);
@@ -238,5 +274,32 @@
   .no-scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+  }
+
+  /* Custom animations */
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-10deg);
+    }
+    75% {
+      transform: rotate(10deg);
+    }
+  }
+
+  /* Ticket shape styling */
+  .ticket-shape {
+    border-radius: 12px;
+    position: relative;
+  }
+
+  /* Create ticket tear effect on mobile */
+  @media (max-width: 768px) {
+    .ticket-shape {
+      border-radius: 8px;
+    }
   }
 }

@@ -27,7 +27,7 @@ const EventCard = (event: Event) => {
           className={`aspect-[1.67] object-cover w-full rounded-[8px] lg:rounded-[20px]`}
         />
         <section
-          className={`items-stretch flex w-full flex-col bg-[#1E2126] p-2 lg:p-4 rounded-[8px] lg:rounded-[20px]`}
+          className={`items-stretch flex w-full flex-col bg-background-secondary p-2 lg:p-4 rounded-[8px] lg:rounded-[20px]`}
         >
           <h3
             className="text-white text-ellipsis leading-[27px] line-clamp-2 text-base"

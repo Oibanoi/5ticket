@@ -10,6 +10,7 @@ import {
 } from "@/components/event-detail";
 import { mockEventDetail } from "@/mocks/event-detail";
 import { useTranslations } from "next-intl";
+import { MobileBottomActions } from "@/components/common/MobileBottomActions";
 
 export default function EventBooking() {
   const t = useTranslations("EventDetail");
@@ -73,14 +74,14 @@ export default function EventBooking() {
       />
 
       {/* Mobile Bottom Button */}
-      <div className="fixed bottom-0 left-0 right-0 bg-zinc-900 border-t border-zinc-800 px-4 py-3 lg:hidden z-50">
+      <MobileBottomActions>
         <Button
           onClick={handleBookClick}
           className="w-full h-[48px] rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-base"
         >
           {t("select_ticket")}
         </Button>
-      </div>
+      </MobileBottomActions>
     </>
   );
 }

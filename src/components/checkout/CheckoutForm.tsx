@@ -54,9 +54,11 @@ const CheckoutTimer: React.FC<TimerProps> = ({
   };
 
   return (
-    <div className="flex flex-col text-[#090A0C] font-normal text-center bg-[#FE0] px-4 py-2 rounded-[20px]">
-      <div className="text-[#090A0C] text-ellipsis text-base">{t("complete_booking")}</div>
-      <div className="text-[#090A0C] text-ellipsis text-5xl leading-none mt-1.5 max-md:text-[40px]">
+    <div className="flex flex-col text-dark-active font-normal text-center bg-yellow-normal px-4 py-2 rounded-[20px]">
+      <div className="text-dark-active text-ellipsis text-[length:var(--font-size-base)]">
+        {t("complete_booking")}
+      </div>
+      <div className="text-dark-active text-ellipsis text-[length:var(--font-size-4xl)] md:text-[length:var(--font-size-5xl)] leading-none mt-1.5">
         {formatTime(timeLeft.minutes, timeLeft.seconds)}
       </div>
     </div>
@@ -73,14 +75,14 @@ interface EventInfoProps {
 
 const EventInfo: React.FC<EventInfoProps> = ({ title, date, location, imageUrl }) => {
   return (
-    <article className="bg-[#1E2126] p-4 rounded-[20px]">
+    <article className="bg-background-secondary p-4 rounded-[20px]">
       {imageUrl && (
         <div className="relative w-full h-32 mb-4 rounded-[20px] overflow-hidden">
           <Image src={imageUrl} alt={title} fill className="object-cover" />
         </div>
       )}
       <h3 className="text-white text-ellipsis text-xl font-bold leading-[30px]">{title}</h3>
-      <div className="flex w-full flex-col items-stretch text-xs text-[#F0F3F6] font-normal mt-4">
+      <div className="flex w-full flex-col items-stretch text-[length:var(--font-size-xs)] text-light-normal font-normal mt-4">
         <div className="flex items-center gap-1 leading-none">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0">
             <path
@@ -88,7 +90,7 @@ const EventInfo: React.FC<EventInfoProps> = ({ title, date, location, imageUrl }
               fill="#F0F3F6"
             />
           </svg>
-          <div className="text-[#F0F3F6] text-ellipsis">{date}</div>
+          <div className="text-sm text-ellipsis">{date}</div>
         </div>
         <div className="flex w-full items-start gap-1 leading-[15px] mt-1.5">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0 mt-0.5">
@@ -97,7 +99,7 @@ const EventInfo: React.FC<EventInfoProps> = ({ title, date, location, imageUrl }
               fill="#F0F3F6"
             />
           </svg>
-          <div className="text-[#F0F3F6] text-ellipsis flex-1">{location}</div>
+          <div className="text-sm text-ellipsis flex-1">{location}</div>
         </div>
       </div>
     </article>
@@ -117,15 +119,13 @@ const TicketSummary: React.FC<TicketSummaryProps> = ({ quantity, ticketType, pri
   };
 
   return (
-    <div className="items-center flex w-full text-base font-bold whitespace-nowrap bg-[#1E2126] p-4 rounded-[20px]">
-      <div className="self-stretch flex min-w-60 w-full gap-[25px] justify-between flex-1 shrink basis-[0%] my-auto">
+    <div className="items-center flex w-full text-base font-bold whitespace-nowrap bg-background-secondary p-4 rounded-[20px]">
+      <div className="self-stretch flex min-w-60 w-full justify-between flex-1 shrink basis-[0%] my-auto">
         <div className="flex items-center gap-4 text-white">
           <div className="text-white self-stretch my-auto">X{quantity}</div>
-          <div className="text-white text-ellipsis self-stretch w-[200px] my-auto">
-            {ticketType}
-          </div>
+          <div className="text-white text-ellipsis self-stretch my-auto">{ticketType}</div>
         </div>
-        <div className="text-[#F30C60] text-right">{formatPrice(price * quantity)}</div>
+        <div className="text-red-normal text-right">{formatPrice(price * quantity)}</div>
       </div>
     </div>
   );
@@ -158,14 +158,14 @@ const FormField: React.FC<FormFieldProps> = ({
           <span className="text-white">{label}</span>
           {required && <span className="text-red-400">*</span>}
         </label>
-        <div className="items-center shadow-[0_2px_4px_0_rgba(0,0,0,0.20)] flex w-full gap-2 text-base text-[#EBEEF2] font-normal bg-[#3E4450] mt-1 py-2 rounded-[20px] max-md:max-w-full">
+        <div className="items-center shadow-[0_2px_4px_0_rgba(0,0,0,0.20)] flex w-full gap-2 text-[length:var(--font-size-base)] text-input-text font-normal bg-input-bg mt-1 py-2 rounded-[20px] max-md:max-w-full">
           <div className="self-stretch flex min-w-60 min-h-6 w-full items-center gap-2 my-auto px-4">
             <input
               type={type}
               value={value}
               onChange={(e) => onChange(e.target.value)}
               placeholder={placeholder}
-              className="text-[#EBEEF2] bg-transparent border-none outline-none text-ellipsis flex-1 w-full my-auto placeholder:text-[#EBEEF2]/60"
+              className="text-input-text bg-transparent border-none outline-none text-ellipsis flex-1 w-full my-auto placeholder:text-input-text/60"
               aria-label={label}
             />
             {type === "date" && (
@@ -189,6 +189,8 @@ export interface CheckoutFormData {
   lastName: string;
   birthDate: string;
   idNumber: string;
+  paymentMethod?: string;
+  promoCode?: string;
 }
 
 interface CheckoutFormProps {
@@ -216,6 +218,8 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
     lastName: initialData?.lastName || "",
     birthDate: initialData?.birthDate || "",
     idNumber: initialData?.idNumber || "",
+    paymentMethod: initialData?.paymentMethod || "",
+    promoCode: initialData?.promoCode || "",
   });
 
   const handleInputChange = (field: keyof CheckoutFormData, value: string) => {
@@ -280,6 +284,12 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
     eventInfo: <EventInfo {...eventInfo} />,
     ticketSummary: <TicketSummary {...ticketInfo} />,
     formFields,
+    paymentMethod: formData.paymentMethod,
+    promoCode: formData.promoCode,
+    onPaymentMethodChange: (method: string) =>
+      handleInputChange("paymentMethod" as keyof CheckoutFormData, method),
+    onPromoCodeChange: (code: string) =>
+      handleInputChange("promoCode" as keyof CheckoutFormData, code),
   };
 
   return (

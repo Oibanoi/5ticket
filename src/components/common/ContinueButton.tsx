@@ -20,9 +20,9 @@ export const ContinueButton: React.FC<ContinueButtonProps> = ({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`justify-center flex w-full gap-2.5 text-base text-[#FCFCFD] font-bold tracking-[-0.03px] bg-blue-600 px-6 py-3 rounded-[100px] hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${className}`}
+      className={`justify-center flex w-full gap-2.5 text-[length:var(--font-size-base)] text-light font-bold tracking-[-0.03px] bg-blue-normal px-6 py-3 rounded-[100px] hover:bg-blue-normal-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${className}`}
     >
-      <span className="text-[#FCFCFD]">{children}</span>
+      <span className="text-light">{children}</span>
     </button>
   );
 };

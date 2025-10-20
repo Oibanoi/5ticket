@@ -93,7 +93,7 @@ export const TicketSelectionPage: React.FC<TicketSelectionPageProps> = ({
   };
 
   return (
-    <div className="px-4 gap-5 flex max-md:flex-col max-md:items-stretch">
+    <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
       {/* Left: Banner Section */}
       <div className="w-[65%] max-md:w-full max-md:ml-0">
         <div className="grow text-base text-white font-bold max-md:max-w-full">

@@ -37,7 +37,7 @@ export const MobileTicketModal: React.FC<MobileTicketModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-end lg:items-center">
+    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-end lg:items-center z-1000">
       <div className="bg-zinc-900 w-full lg:max-w-2xl lg:mx-auto rounded-t-2xl lg:rounded-2xl max-h-[85vh] overflow-y-auto">
         <div className="sticky top-0 bg-zinc-900/95 backdrop-blur-sm border-b border-zinc-800 px-4 py-4 flex items-center justify-between">
           <h3 className="text-lg font-bold">{t("select_ticket")}</h3>
