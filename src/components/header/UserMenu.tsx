@@ -24,7 +24,7 @@ export const UserMenu = () => {
 
   const user = session.user;
   const userName = user.name || user.email || "User";
-  const userAvatar = user.image || user.picture;
+  const userAvatar = user.avatar;
 
   const handleSignOut = async () => {
     await signOut({ callbackUrl: "/" });

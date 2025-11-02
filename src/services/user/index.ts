@@ -38,6 +38,13 @@ interface UserByEmailResponse {
   [key: string]: unknown;
 }
 
+interface MeSummaryResponse {
+  id: number;
+  email: string;
+  name: string;
+  avatar: string;
+}
+
 // config is for axios config
 export function login(data: { email: string; password: string }, configs?: AxiosRequestConfig) {
   return post<LoginResponse>("/login", data, configs);
@@ -53,6 +60,10 @@ export function register(payload: PayloadRegister, configs?: AxiosRequestConfig)
 
 export function getUserInfo(config?: AxiosRequestConfig) {
   return get<UserData>("/users/user-info", config);
+}
+
+export function getMeSummary(config?: AxiosRequestConfig) {
+  return get<MeSummaryResponse>("/users/me/summary", config);
 }
 
 export function updateUserInfo(

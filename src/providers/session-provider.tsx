@@ -12,6 +12,7 @@ export function SessionProvider({ children }: SessionProviderProps) {
     <NextAuthSessionProvider
       refetchInterval={5 * 60} // Refetch session every 5 minutes
       refetchOnWindowFocus={true} // Refetch when window gains focus
+      basePath="/api/auth"
     >
       {children}
     </NextAuthSessionProvider>

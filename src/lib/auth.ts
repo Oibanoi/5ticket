@@ -1,8 +1,8 @@
+import { env } from "@/lib/env/index.mjs";
+import { getMeSummary, login, loginWithGoogle, logout } from "@/services/user";
 import { NextAuthOptions, Session, getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import { getUserInfo, login, loginWithGoogle, logout } from "@/services/user";
-import { env } from "@/lib/env/index.mjs";
 
 function getEnv(
   credentials: Record<"email" | "password" | "isDevelopment", string> | undefined,
@@ -27,41 +27,33 @@ export const authOptions: NextAuthOptions = {
           placeholder: "e.g. example@example.com",
         },
         password: { label: "Mật khẩu", type: "password" },
-        accessToken: {},
         isDevelopment: { label: "Is Development?", type: "checkbox" },
       },
       async authorize(credentials, req) {
+        if (!credentials?.email || !credentials?.password) return null;
+
         const env = getEnv(credentials, req);
+        try {
+          const { data, success, message } = await login(credentials!, { timeout: 3000 });
+          if (!success || !data?.access_token) throw new Error(message || "Login failed");
 
-        let access_token = credentials?.accessToken;
-        if (!access_token) {
-          const res = await login(credentials!, {
-            timeout: 3000,
+          const { data: profile, success: ok } = await getMeSummary({
+            headers: { Authorization: `Bearer ${data.access_token}` },
           });
-          // If no error and we have user data, return it
-          if (res.success && res.data) {
-            const user = res.data;
-            access_token = user.access_token;
-          } else {
-            throw new Error(res.message);
-          }
-        }
+          if (!ok || !profile) throw new Error("User fetch failed");
 
-        if (!access_token) throw new Error("ehasdasdas");
-        const responseUser = await getUserInfo({
-          headers: { Authorization: "Bearer " + access_token },
-          // baseURL,
-        });
-
-        if (responseUser.success && responseUser.data)
-          return Object.assign(responseUser.data, {
-            access_token,
-            // email: user.username,
-            email: responseUser.data.email,
-            picture: responseUser.data.image,
+          return {
+            id: String(profile.id),
+            name: profile.name,
+            email: profile.email,
+            avatar: profile.avatar,
+            access_token: data.access_token,
             env,
-          });
-        return null;
+          };
+        } catch (err) {
+          console.error("[Auth] authorize error:", err);
+          return null;
+        }
       },
     }),
     GoogleProvider({
@@ -72,12 +64,25 @@ export const authOptions: NextAuthOptions = {
   ],
   events: {
     async signOut({ session }) {
-      await logout({
-        headers: { Authorization: "Bearer " + session?.access_token },
-      });
+      try {
+        if (session?.access_token)
+          await logout({ headers: { Authorization: `Bearer ${session.access_token}` } });
+      } catch (err) {
+        console.warn("[Auth] Logout failed:", err);
+      }
     },
   },
-  session: { maxAge: 22 * 60 * 60 },
+  session: {
+    strategy: "jwt",
+    maxAge: 22 * 60 * 60, // 22h
+  },
+
+  // Disable default error page - errors will be handled in client
+  pages: {
+    signIn: "/", // Redirect to home instead of default sign-in page
+    error: "/", // Redirect to home instead of default error page
+  },
+
   callbacks: {
     async jwt({ token, account, user }) {
       // NOTE: Logic login with google
@@ -88,7 +93,7 @@ export const authOptions: NextAuthOptions = {
           throw new Error("Google login failed");
         }
 
-        const responseUser = await getUserInfo({
+        const responseUser = await getMeSummary({
           headers: {
             Authorization: "Bearer " + googleLoginData.data.access_token,
           },
@@ -98,22 +103,28 @@ export const authOptions: NextAuthOptions = {
           return {
             ...responseUser.data,
             access_token: googleLoginData.data.access_token,
+            id: responseUser.data.id.toString(),
+            name: responseUser.data.name,
             email: responseUser.data.email,
-            picture: responseUser.data.image,
+            avatar: responseUser.data.avatar,
+            env: "prod",
           };
         }
+        throw new Error("Google login failed");
       }
-      const data = { ...token, ...user };
-      return data;
+      return {
+        ...token,
+        ...user,
+      };
     },
     async session({ session, token }) {
-      type TokenWithAuth = typeof token & { access_token?: string };
-      const { access_token, ..._user } = token as TokenWithAuth;
-
-      if (access_token) {
-        session.access_token = access_token;
-      }
-      session.user = _user;
+      session.user = {
+        id: token.id.toString(),
+        name: token.name,
+        email: token.email,
+        avatar: token.avatar as string,
+      };
+      session.access_token = token.access_token;
       return session;
     },
   },

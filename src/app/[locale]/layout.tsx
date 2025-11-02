@@ -9,6 +9,7 @@ import { HeaderWrapper } from "@/components/header/HeaderWrapper";
 import { ReactQueryProvider } from "@/providers/react-query-provider";
 import { SessionProvider } from "@/providers/session-provider";
 import { AuthProvider } from "@/providers/auth-provider";
+import { getSession } from "next-auth/react";
 
 type Props = {
   children: React.ReactNode;
