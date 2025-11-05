@@ -1,7 +1,10 @@
 import AllEvents from "@/components/homepage/all-events";
 import Banner from "@/components/homepage/banner";
 import EventListContainer from "@/components/homepage/event-list-container";
+import { getQueryClient } from "@/lib/api/query-client";
+import { getMeSummary } from "@/services/user";
 import { Event } from "@/types";
+import { useQuery } from "@tanstack/react-query";
 import { Flame } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 

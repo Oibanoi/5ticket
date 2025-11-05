@@ -34,7 +34,7 @@ export const authOptions: NextAuthOptions = {
 
         const env = getEnv(credentials, req);
         try {
-          const { data, success, message } = await login(credentials!, { timeout: 3000 });
+          const { data, success, message } = await login(credentials!, { timeout: 6000 });
           if (!success || !data?.access_token) throw new Error(message || "Login failed");
 
           const { data: profile, success: ok } = await getMeSummary({

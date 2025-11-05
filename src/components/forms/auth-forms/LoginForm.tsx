@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { clearSessionCache } from "@/lib/api/client";
 import { Eye, EyeOff } from "lucide-react";
 import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
@@ -44,6 +45,8 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSignedIn, onRegister, on
       if (result?.error) {
         setError(t("login_error"));
       } else if (result?.ok) {
+        // Clear session cache to fetch new token
+        clearSessionCache();
         onSignedIn?.();
       }
     } catch {

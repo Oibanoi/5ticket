@@ -1,8 +1,5 @@
 "use client";
 
-import React from "react";
-import { signOut, useSession } from "next-auth/react";
-import { useTranslations } from "next-intl";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,7 +8,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { User, LogOut, Settings, Ticket } from "lucide-react";
+import { LogOut, Settings, Ticket, User } from "lucide-react";
+import { signOut, useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export const UserMenu = () => {
