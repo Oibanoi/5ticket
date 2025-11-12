@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
 import { Ticket } from "@/types";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import React from "react";
 
 interface TicketItemProps {
   ticket: Ticket;

@@ -158,5 +158,11 @@
     "payment_method": "Phương thức thanh toán",
     "go_home": "Trang chủ",
     "go_to_tickets": "Danh sách vé"
+  },
+  "ErrorPage": {
+    "title": "Ôi! Có lỗi xảy ra rồi",
+    "description": "Đừng lo, chú mèo vé của chúng tôi đang xử lý! Vui lòng thử lại.",
+    "try_again": "Thử lại",
+    "go_home": "Về trang chủ"
   }
 }

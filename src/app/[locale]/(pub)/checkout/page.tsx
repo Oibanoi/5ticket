@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
 import { CheckoutForm, CheckoutFormData } from "@/components/checkout";
-import { mockEventInfo, getTicketById } from "@/mocks/ticket-data";
-import LoadingAnimation, { LoadingSpinner } from "@/components/common/LoadingAnimation";
+import { LoadingSpinner } from "@/components/common/LoadingAnimation";
+import { getTicketById, mockEventInfo } from "@/mocks/ticket-data";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -39,8 +39,6 @@ export default function CheckoutPage() {
   }, [router]);
 
   const handleSubmit = (data: CheckoutFormData) => {
-    console.log("Checkout data:", data);
-
     if (!data.firstName || !data.lastName || !data.birthDate || !data.idNumber) {
       alert("Vui lòng điền đầy đủ thông tin");
       return;

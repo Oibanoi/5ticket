@@ -3,6 +3,7 @@ import { getMeSummary, login, loginWithGoogle, logout } from "@/services/user";
 import { NextAuthOptions, Session, getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
+import logger from "./logger";
 
 function getEnv(
   credentials: Record<"email" | "password" | "isDevelopment", string> | undefined,
@@ -51,7 +52,6 @@ export const authOptions: NextAuthOptions = {
             env,
           };
         } catch (err) {
-          console.error("[Auth] authorize error:", err);
           return null;
         }
       },
@@ -68,7 +68,7 @@ export const authOptions: NextAuthOptions = {
         if (session?.access_token)
           await logout({ headers: { Authorization: `Bearer ${session.access_token}` } });
       } catch (err) {
-        console.warn("[Auth] Logout failed:", err);
+        logger.error("[Auth] Logout failed:", err);
       }
     },
   },

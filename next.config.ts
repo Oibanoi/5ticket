@@ -37,6 +37,8 @@ const nextConfig: NextConfig = {
       "via.placeholder.com",
       "rjp-v2-prod.s3.ap-southeast-1.amazonaws.com",
       "api.builder.io",
+      "cdn.5ticket.io",
+      "5ticket-dev.s3.ap-southeast-1.amazonaws.com",
     ],
   },
 

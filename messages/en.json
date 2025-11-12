@@ -158,5 +158,11 @@
     "payment_method": "Payment Method",
     "go_home": "Home",
     "go_to_tickets": "My Tickets"
+  },
+  "ErrorPage": {
+    "title": "Oops! Something went wrong",
+    "description": "Don't worry, our ticket cat is on it! Please try again.",
+    "try_again": "Try Again",
+    "go_home": "Go Home"
   }
 }

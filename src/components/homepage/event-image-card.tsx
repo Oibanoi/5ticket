@@ -1,19 +1,22 @@
 import Image from "next/image";
-import { Event } from "@/types";
+import { MainEvent } from "@/types";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 interface EventImageCardProps {
-  event: Event;
+  event: MainEvent;
   className?: string;
 }
 const EventImageCard = ({ event, className }: EventImageCardProps) => {
+  const eventUrl = `/events/${event.slug || event.id}`;
+  const eventImage = event.wall_paper_url || event.logo_url || "/event/banner.png";
+
   return (
     <div className="w-full h-auto">
-      <Link href={event.url || ""}>
+      <Link href={eventUrl}>
         <Image
-          src={event.image}
-          alt={event.title}
+          src={eventImage}
+          alt={event.name}
           width={264}
           height={300}
           className={cn(

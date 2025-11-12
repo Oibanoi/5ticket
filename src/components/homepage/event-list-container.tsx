@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import EventCard from "./event-card";
 import EventCarousel from "./event-carousel";
-import { Event } from "@/types";
+import { MainEvent } from "@/types";
 import EventImageCard from "./event-image-card";
 import EventFillter from "./event-fillter";
 
@@ -10,7 +10,7 @@ interface EventListContainerProps {
   icon?: React.ReactNode;
   title: string;
   categories?: string[];
-  events: Event[];
+  events: MainEvent[];
   useCarousel?: boolean;
   loop?: boolean;
   autoplay?: boolean;
@@ -51,8 +51,8 @@ const EventListContainer = ({
             <div key={event.id} className="flex-none justify-self-center">
               {event.onlyImage ? (
                 <Image
-                  src={event.image}
-                  alt={event.title}
+                  src={event.wall_paper_url}
+                  alt={event.name}
                   width={264}
                   height={300}
                   className="w-full h-full object-cover rounded-[20px]"

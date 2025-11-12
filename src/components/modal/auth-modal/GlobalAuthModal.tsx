@@ -10,7 +10,10 @@ export const GlobalAuthModal: React.FC = () => {
 
   return (
     <Dialog open={isAuthModalOpen} onOpenChange={(open) => !open && closeAuthModal()}>
-      <DialogContent className="max-w-6xl p-0 gap-0 border-0" showCloseButton={false}>
+      <DialogContent
+        className="max-w-[90%] lg:max-w-6xl p-0 gap-0 border-0"
+        showCloseButton={false}
+      >
         <ModalLogin onClose={closeAuthModal} defaultType={authModalType} />
       </DialogContent>
     </Dialog>

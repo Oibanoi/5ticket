@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { ChevronUp, ChevronDown } from "lucide-react";
-import Image from "next/image";
-import { TicketQuantityModal } from "./TicketQuantityModal";
 import { Button } from "@/components/ui/button";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { useTranslations } from "next-intl";
+import React, { useState } from "react";
+import { TicketQuantityModal } from "./TicketQuantityModal";
 
 export interface TicketOption {
   id: string;

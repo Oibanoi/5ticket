@@ -2,8 +2,13 @@
 
 import { useTranslations } from "next-intl";
 import EventListContainer from "./event-list-container";
-import { events } from "@/app/[locale]/(pub)/(homepage)/page";
-const AllEvents = () => {
+import { MainEvent } from "@/types";
+
+interface AllEventsProps {
+  events: MainEvent[];
+}
+
+const AllEvents = ({ events }: AllEventsProps) => {
   const t = useTranslations("HomePage");
   const categories = ["Tất cả", "Giải trí", "Giáo dục", "Sức khỏe", "Công nghệ"];
 

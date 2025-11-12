@@ -4,24 +4,27 @@ import { formatPrice } from "@/lib/price";
 import { formatDateEN, formatDateVI } from "@/lib/date";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
-import { Event } from "@/types";
+import { MainEvent } from "@/types";
 
-const EventCard = (event: Event) => {
+const EventCard = (event: MainEvent) => {
   const t = useTranslations("HomePage");
   const locale = useLocale();
-  const date = locale === "vi" ? formatDateVI(event.date) : formatDateEN(event.date);
-  const price = formatPrice(event.price);
+  const date = locale === "vi" ? formatDateVI(event.start_date) : formatDateEN(event.start_date);
+  const price = formatPrice(event.base_price);
+  const eventUrl = `/events/${event.slug || event.id}`;
+  const eventImage = event.wall_paper_url || event.logo_url || "/event/banner.png";
+
   return (
     <article
       className={`max-w-[264px] text-lg font-bold cursor-pointer transition-transform lg:hover:scale-105 `}
       role="button"
       tabIndex={0}
-      aria-label={`Event: ${event.title}, Price: ${event.price}, Date: ${event.date}`}
+      aria-label={`Event: ${event.name}, Price: ${event.base_price}, Date: ${event.start_date}`}
     >
-      <Link href={event.url || ""}>
+      <Link href={eventUrl}>
         <Image
-          src={event.image}
-          alt={event.title}
+          src={eventImage}
+          alt={event.name}
           width={264}
           height={300}
           className={`aspect-[1.67] object-cover w-full rounded-[8px] lg:rounded-[20px]`}
@@ -31,9 +34,9 @@ const EventCard = (event: Event) => {
         >
           <h3
             className="text-white text-ellipsis leading-[27px] line-clamp-2 text-base"
-            title={event.title}
+            title={event.name}
           >
-            {event.title}
+            {event.name}
           </h3>
           <div className={`text-[#F30C60] text-ellipsis mt-1 text-base`}>
             {t("from")} {price}

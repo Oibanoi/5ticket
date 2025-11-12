@@ -1,8 +1,17 @@
-import { events } from "@/app/[locale]/(pub)/(homepage)/page";
+import { MainEvent } from "@/types";
 import EventCarousel from "./event-carousel";
 import EventImageCard from "./event-image-card";
 
-const Banner = () => {
+interface BannerProps {
+  events: MainEvent[];
+}
+
+const Banner = ({ events }: BannerProps) => {
+  // Ensure we have events to display
+  if (events.length === 0) {
+    return null;
+  }
+
   return (
     <section className="my-3">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
@@ -25,12 +34,16 @@ const Banner = () => {
         </div>
 
         <div className="hidden lg:grid lg:grid-rows-2 gap-2 col-span-1">
-          <div className="w-full h-full">
-            <EventImageCard event={events[0]} className="w-full" />
-          </div>
-          <div className="w-full h-full">
-            <EventImageCard event={events[1]} className="w-full" />
-          </div>
+          {events[0] && (
+            <div className="w-full h-full">
+              <EventImageCard event={events[0]} className="w-full" />
+            </div>
+          )}
+          {events[1] && (
+            <div className="w-full h-full">
+              <EventImageCard event={events[1]} className="w-full" />
+            </div>
+          )}
         </div>
       </div>
     </section>

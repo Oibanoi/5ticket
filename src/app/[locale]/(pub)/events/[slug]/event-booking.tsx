@@ -23,10 +23,7 @@ export default function EventBooking() {
     setShowMobileTickets(true);
   };
 
-  const handleBuyClick = () => {
-    // TODO: Implement navigation to checkout
-    console.log("Navigate to checkout");
-  };
+  const handleBuyClick = () => {};
 
   const toggleDay = (dayId: string) => {
     setExpandedDay(expandedDay === dayId ? null : dayId);
@@ -36,11 +33,11 @@ export default function EventBooking() {
     <>
       {/* Hero Section */}
       <EventHero
-        title={event.title}
-        image={event.image}
-        date={event.date}
+        title={event.name}
+        image={event.wall_paper_url || event.logo_url || "/event/banner.png"}
+        date={event.start_date}
         location={event.location}
-        minPrice={event.price || 0}
+        minPrice={event.base_price || 0}
         onBookClick={handleBookClick}
       />
 
@@ -53,7 +50,7 @@ export default function EventBooking() {
 
         {/* Sidebar - Ticket Selection (Desktop Only) */}
         <div className="hidden lg:block space-y-3">
-          {event.eventDays.map((eventDay) => (
+          {event.event_days.map((eventDay) => (
             <TicketDaySection
               key={eventDay.id}
               eventDay={eventDay}
@@ -69,7 +66,7 @@ export default function EventBooking() {
       <MobileTicketModal
         isOpen={showMobileTickets}
         onClose={() => setShowMobileTickets(false)}
-        eventDays={event.eventDays}
+        eventDays={event.event_days}
         onBuyClick={handleBuyClick}
       />
 

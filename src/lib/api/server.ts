@@ -38,9 +38,8 @@ const getCachedServerSession = cache(async () => {
     const { authOptions } = await import("@/lib/auth");
     return await getServerSession(authOptions);
   } catch (error) {
-    // During static generation, session might not be available
-    logger.debug("[Server] Session not available (likely static generation)");
-    return null;
+    logger.error("[Server] Session not available (likely static generation)", error);
+    throw error;
   }
 });
 

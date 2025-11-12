@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import { PaymentMethod } from "@/types";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { PaymentMethod } from "@/types";
+import React, { useState } from "react";
 
 interface PaymentMethodSectionProps {
   selectedMethod?: PaymentMethod;

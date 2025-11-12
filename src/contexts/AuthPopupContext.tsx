@@ -1,4 +1,11 @@
-import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+  useCallback,
+} from "react";
 
 interface AuthPopupContextType {
   isLoginPopupVisible: boolean;
@@ -29,10 +36,10 @@ export const AuthPopupProvider: React.FC<AuthPopupProviderProps> = ({ children }
   const [isLoginPopupVisible, setIsLoginPopupVisible] = useState(false);
   const [isRegisterPopupVisible, setIsRegisterPopupVisible] = useState(false);
 
-  const showLoginPopup = (pendingActionCallback?: () => void) => {
+  const showLoginPopup = useCallback(() => {
     setIsLoginPopupVisible(true);
     setIsRegisterPopupVisible(false);
-  };
+  }, []);
 
   // Listen for global events to show login popup
   useEffect(() => {

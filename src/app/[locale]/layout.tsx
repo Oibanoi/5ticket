@@ -1,15 +1,14 @@
-import { routing } from "@/i18n/routing";
+import { HeaderWrapper } from "@/components/header/HeaderWrapper";
 import { redditSans } from "@/fonts";
-import "@/styles/globals.css";
+import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
+import { AuthProvider } from "@/providers/auth-provider";
+import { ReactQueryProvider } from "@/providers/react-query-provider";
+import { SessionProvider } from "@/providers/session-provider";
+import "@/styles/globals.css";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { HeaderWrapper } from "@/components/header/HeaderWrapper";
-import { ReactQueryProvider } from "@/providers/react-query-provider";
-import { SessionProvider } from "@/providers/session-provider";
-import { AuthProvider } from "@/providers/auth-provider";
-import { getSession } from "next-auth/react";
 
 type Props = {
   children: React.ReactNode;
